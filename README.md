@@ -5,26 +5,29 @@ Puppet module for phpbrew.
 
 ## Usage
 
-	phpbrew::install{ '5.3.27':
+	phpbrew::install { '5.3.27':
       $version = '',
       $build_prameters = undef,
       $php_inis = undef,
       $install_dir = '/opt/phpbrew',
-    )
+    }
 
+Additionally, you need to configure puppet to use the "future" parser, adding the following line to your puppet configuration on Vagrantfile:
+
+    puppet.options = '--parser future'
 
 ## Configuration
 
 You can additional define the version (if the name should be different), the build parameters, the php ini files you want to copy and the install directory:
 
-	phpbrew::install{ 'php-5.3.27':
+	phpbrew::install { 'php-5.3.27':
       $version => '5.3.27',
       $build_prameters => '+mysql',
       $php_inis => [
         '/etc/php5/mods-available/custom.ini'
       ],
       $install_dir => '/opt/custom_dir',
-    )
+    }
 
 Default values:
 
@@ -38,9 +41,9 @@ Default values:
 
 ### Usage
 
-    define phpbrew::extension{ 'xdebug':
+    define phpbrew::extension { 'xdebug':
       $php_version = '5.3.27',
-    )
+    }
 
 Note the php version is required and the php version must be installed by php brew.
 
